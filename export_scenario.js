@@ -1,9 +1,8 @@
 function onOpen() {
-   Logger.log('Initializing...'); 
+
   var ui = SlidesApp.getUi();
   ui.createMenu('Экспорт') .addItem('Создать сценарий', 'export_scenario').addToUi();
-
-   Logger.log('Menu added');       
+      
 }
 
 function export_speaker_notes() {
@@ -12,7 +11,6 @@ function export_speaker_notes() {
 
   Logger.log('Starting export');
 
-  // var response = ui.prompt('Getting to know you', 'May I know your name?', ui.ButtonSet.YES_NO);
 
   const presentation = SlidesApp.getActivePresentation();
   const slides = presentation.getSlides();
