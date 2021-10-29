@@ -1,6 +1,15 @@
 const SKILL_TOKEN = "➡️"
 const DIFFICULTY_TOKEN = "📶"
 
+/**
+ *  Красивое
+ */
+function onOpen() {
+  var ui = DocumentApp.getUi();
+  ui.createMenu('📶') .addItem('Отчет по нагрузке', 'report_training_load').addToUi();     
+}
+
+
 
 /**
  *  Проверяет, явялется ли парараф навыком
@@ -134,7 +143,6 @@ function draw_report(document, report){
     // Выводим сложность
     Object.keys(difficulties).forEach(function(diff_level){ 
 
-      Logger.log(difficulties[diff_level])
         if (difficulties[diff_level] > 0){
           document.appendParagraph("Сложность " + diff_level +": " + difficulties[diff_level])
         }
@@ -152,7 +160,7 @@ function draw_report(document, report){
 /**
  *  Главная функция
  */
-function main() {
+function report_training_load() {
 
   // Получает текущий документ
   var document = DocumentApp.getActiveDocument(); 
@@ -166,6 +174,12 @@ function main() {
   // Визуализирует отчет в конце документа
   draw_report(document, report)
 
-  // Logger.log(report)
-
 }
+
+
+// function onOpen() {
+ 
+//   var ui = DocumentApp.getUi();
+//   ui.createMenu('📶') .addItem('Посчитать нарузку', 'report_training_load').addToUi();
+      
+// }
