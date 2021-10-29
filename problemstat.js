@@ -176,10 +176,3 @@ function report_training_load() {
 
 }
 
-
-// function onOpen() {
- 
-//   var ui = DocumentApp.getUi();
-//   ui.createMenu('📶') .addItem('Посчитать нарузку', 'report_training_load').addToUi();
-      
-// }
