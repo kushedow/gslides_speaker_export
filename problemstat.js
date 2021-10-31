@@ -1,12 +1,42 @@
 const SKILL_TOKEN = "➡️"
 const DIFFICULTY_TOKEN = "📶"
+const TYPE_TOKEN = "*️⃣"
+
 
 /**
- *  Красивое
+ *  Красивое (добавляем пункты меню)
  */
 function onOpen() {
   var ui = DocumentApp.getUi();
-  ui.createMenu('📶') .addItem('Отчет по нагрузке', 'report_training_load').addToUi();     
+  menu = ui.createMenu('📶') 
+  menu.addItem('Отчет по нагрузке', 'report_training_load').addToUi();     
+  menu.addItem('Добавить тренажер', 'add_problem').addToUi();  
+}
+
+
+/**
+ *  Добавляет шаблон задания на программирование 
+ */
+function add_problem() {
+
+  var body = DocumentApp.getActiveDocument().getBody()
+
+  body.appendParagraph("Задание X").setHeading(DocumentApp.ParagraphHeading.HEADING3) 
+  body.appendParagraph("")
+  body.appendParagraph(SKILL_TOKEN + " Навык")
+  body.appendParagraph(DIFFICULTY_TOKEN + "1")
+  body.appendParagraph(TYPE_TOKEN + " Тренажер ")
+
+  var cells = [
+    ['# Исходник'],
+    ['# Решение'],
+    ['# Тесты'],
+  ];
+
+  body.appendParagraph("")
+  body.appendTable(cells);
+  body.appendParagraph("")
+
 }
 
 
@@ -121,8 +151,8 @@ function draw_report(document, report){
   document.appendHorizontalRule()
   document.appendParagraph("")
   document.appendParagraph("Отчет по нагрузке").setHeading(DocumentApp.ParagraphHeading.HEADING2) 
-  document.appendParagraph("")
-  
+  document.appendParagraph("Требовния: https://docs.google.com/document/d/18UFzkp4fMOJ7tlNNSN56i473VhDvkyRqYvAOt9iWKKs/edit")
+   document.appendParagraph("")
 
   Object.keys(report).forEach(function(skill){
 
@@ -175,4 +205,3 @@ function report_training_load() {
   draw_report(document, report)
 
 }
-
