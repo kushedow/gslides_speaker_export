@@ -11,6 +11,7 @@ function onOpen() {
   menu = ui.createMenu('📶') 
   menu.addItem('Отчет по нагрузке', 'report_training_load').addToUi();     
   menu.addItem('Добавить тренажер', 'add_problem').addToUi();  
+  menu.addItem('Добавить тест', 'add_test').addToUi(); 
 }
 
 
@@ -31,6 +32,29 @@ function add_problem() {
     ['# Исходник'],
     ['# Решение'],
     ['# Тесты'],
+  ];
+
+  body.appendParagraph("")
+  body.appendTable(cells);
+  body.appendParagraph("")
+
+}
+
+/**
+ *  Добавляет шаблон задания на тест 
+ */
+function add_test() {
+
+  var body = DocumentApp.getActiveDocument().getBody()
+
+  body.appendParagraph("Задание X").setHeading(DocumentApp.ParagraphHeading.HEADING3) 
+  body.appendParagraph("")
+  body.appendParagraph(SKILL_TOKEN + " Навык")
+  body.appendParagraph(DIFFICULTY_TOKEN + "1")
+  body.appendParagraph(TYPE_TOKEN + " Тест ")
+
+  var cells = [
+    [""],
   ];
 
   body.appendParagraph("")
